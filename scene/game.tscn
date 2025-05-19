@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dinriuu00s61k"]
+
+[ext_resource type="Script" uid="uid://blgwystedja0g" path="res://scripts/game.gd" id="1_33cqm"]
+[ext_resource type="PackedScene" uid="uid://7vduu207os0s" path="res://scene/level.tscn" id="1_dbls1"]
+[ext_resource type="PackedScene" uid="uid://bspyq27ltc0vb" path="res://scene/player_plane.tscn" id="2_33cqm"]
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_33cqm")
+
+[node name="Level1" parent="." instance=ExtResource("1_dbls1")]
+position = Vector2(0, -48)
+
+[node name="PlayerPlane" parent="." instance=ExtResource("2_33cqm")]
+position = Vector2(352, 664)
