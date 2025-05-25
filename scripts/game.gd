@@ -1,12 +1,12 @@
 extends Node2D
 
-var speed = 100
+var speed = 0
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("accelerate"):
-		speed += 10
+		speed += 1
 	if event.is_action("decelerate"):
-		speed -= 10
+		speed -= 1
 
 func _process(delta: float) -> void:
 	$Level1.position.y += delta * speed
