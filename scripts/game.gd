@@ -10,3 +10,5 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	$Level1.position.y += delta * speed
+	
+	$Level1._get_bank_change(true)
