@@ -4,7 +4,7 @@ extends Node2D
 @export var decelerate : StringName
 ## The bigger the value, the more straight the river is
 @export var river_straightness : int = 10
-@export var level_length : int = 30
+@export var land_block_length : int = 30
 @export var level_start_length : int = 24
 
 @onready var _grassLayer : TileMapLayer = $GrassLayer
@@ -49,14 +49,54 @@ var bank_right : int = DEFAULT_BANK_RIGHT
 var island_left : int = DEFAULT_BANK_LEFT
 var island_right : int = DEFAULT_BANK_RIGHT
 
-
 var grass_y : int = 0
 var water_y : int = 0
 
-var currentGenerationMode : LandGenerationMode = LandGenerationMode.LEVEL_START
+var current_generation_mode : LandGenerationMode = LandGenerationMode.LEVEL_START
 
-func _get_next_generation_mode(generationMode : LandGenerationMode) -> LandGenerationMode:
-	match generationMode:
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("fire"):
+		generate_land()
+
+func generate_land() -> int:
+	current_generation_mode = LandGenerationMode.LEVEL_START
+	var land_length : int = 0
+	print_debug("LEVEL_START")
+	var block_length : int = _draw_level_start(grass_y)
+	grass_y -= block_length
+	land_length += block_length
+	
+	while current_generation_mode != LandGenerationMode.LEVEL_END:
+		current_generation_mode = _get_next_generation_mode(current_generation_mode)
+		block_length = _draw_land_block(grass_y)
+		grass_y -= block_length
+		land_length += block_length
+		
+	return land_length
+
+func _draw_land_block(start_y : int) -> int:
+	match current_generation_mode:
+		LandGenerationMode.LEVEL_START:
+			print_debug("LEVEL_START")
+			return _draw_level_start(start_y)
+		LandGenerationMode.LEVEL_END:
+			print_debug("LEVEL_END")
+			return _draw_level_end(start_y)
+		LandGenerationMode.RIVER:
+			print_debug("RIVER")
+			return _draw_river(start_y, land_block_length)
+		LandGenerationMode.ISLAND_START:
+			print_debug("ISLAND_START")
+			return _draw_island_start(start_y)
+		LandGenerationMode.ISLAND:
+			print_debug("ISLAND")
+			return _draw_island(start_y, land_block_length)
+			
+	print_debug("_draw_land_block: Unknown LandGenerationMode: " + str(current_generation_mode))
+	return LandGenerationMode.RIVER # should never happen
+
+func _get_next_generation_mode(generation_mode : LandGenerationMode) -> LandGenerationMode:
+	match generation_mode:
 		LandGenerationMode.LEVEL_START:
 			return [LandGenerationMode.RIVER, LandGenerationMode.ISLAND_START].pick_random()
 		LandGenerationMode.LEVEL_END:
@@ -67,34 +107,8 @@ func _get_next_generation_mode(generationMode : LandGenerationMode) -> LandGener
 			return LandGenerationMode.ISLAND
 		LandGenerationMode.ISLAND:
 			return [LandGenerationMode.RIVER, LandGenerationMode.LEVEL_END].pick_random()
-	print_debug("Unknown LandGenerationMode: " + str(generationMode))
+	print_debug("_get_next_generation_mode: Unknown LandGenerationMode: " + str(generation_mode))
 	return LandGenerationMode.RIVER # should never happen
-
-func _ready() -> void:
-	pass
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("fire"):
-		var start = Time.get_ticks_usec()
-		
-		grass_y -= _draw_level_start(grass_y)
-		grass_y -= _draw_river(grass_y, level_length)
-		grass_y -= _draw_island_start(grass_y)
-		grass_y -= _draw_island(grass_y, level_length)
-		grass_y -= _draw_river(grass_y, level_length)
-		grass_y -= _draw_island_start(grass_y)
-		grass_y -= _draw_island(grass_y, level_length)
-		grass_y -= _draw_river(grass_y, level_length)
-		grass_y -= _draw_island_start(grass_y)
-		grass_y -= _draw_island(grass_y, level_length)
-		grass_y -= _draw_level_end(grass_y)
-		
-		_draw_water_block(water_y, level_length)
-		grass_y -= level_length
-		water_y -= level_length / 2
-		var end = Time.get_ticks_usec()
-		var diff = (end - start) / 1000000.0
-		print_debug("_draw_river: " + str(diff))
 
 func _draw_water_block(y : int, block_size : int) -> void:
 	var actual_block_size = block_size / 2
