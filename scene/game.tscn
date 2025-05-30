@@ -7,7 +7,7 @@
 [node name="game" type="Node2D"]
 script = ExtResource("1_33cqm")
 
-[node name="Level1" parent="." instance=ExtResource("1_dbls1")]
+[node name="Level" parent="." instance=ExtResource("1_dbls1")]
 position = Vector2(0, 720)
 
 [node name="PlayerPlane" parent="." instance=ExtResource("2_33cqm")]
