@@ -1,4 +1,5 @@
 extends TileMapLayer
+class_name GrassLayer
 
 ## How long the straight "corridor" at the beginning of the level is.
 @export var level_start_length : int = 24
@@ -23,9 +24,13 @@ const MIN_ISLAND_LEFT : int = MIN_BANK_LEFT + NARROWEST
 const MAX_ISLAND_RIGHT : int = MAX_BANK_RIGHT - NARROWEST
 const OPENING_LEFT : int = DEFAULT_BANK_LEFT - 5
 const OPENING_RIGHT : int = DEFAULT_BANK_RIGHT + 5
+const MIDDLE_X : int = (DEFAULT_BANK_RIGHT + DEFAULT_BANK_LEFT) / 2
 
 var bank_left : int = DEFAULT_BANK_LEFT
 var bank_right : int = DEFAULT_BANK_RIGHT
+
+#var bank_left : int = OPENING_LEFT
+#var bank_right : int = OPENING_RIGHT
 
 var island_left : int = DEFAULT_BANK_LEFT
 var island_right : int = DEFAULT_BANK_RIGHT
@@ -39,7 +44,7 @@ func draw_level_start(start_y : int) -> int:
 		segment_length += 1
 		
 	var y = corridor_end_y
-	while bank_left != OPENING_LEFT && bank_right != OPENING_RIGHT:
+	while not (bank_left == OPENING_LEFT && bank_right == OPENING_RIGHT):
 		_adjust_river_banks(OPENING_LEFT, OPENING_RIGHT, y)
 		block.append_array(_get_river_banks_line(y))
 		segment_length += 1
@@ -53,7 +58,7 @@ func draw_level_end(start_y : int) -> int:
 	var y : int = start_y
 	var segment_length : int = 0
 	
-	while bank_left != DEFAULT_BANK_LEFT && bank_right != DEFAULT_BANK_RIGHT:
+	while not (bank_left == DEFAULT_BANK_LEFT && bank_right == DEFAULT_BANK_RIGHT):
 		_adjust_river_banks(DEFAULT_BANK_LEFT, DEFAULT_BANK_RIGHT, y)	
 		block.append_array(_get_river_banks_line(y))
 		y -= 1
@@ -75,7 +80,7 @@ func draw_island_start(y : int) -> int:
 	var block : Array[Vector2i] = []
 	var segment_length : int = 0
 	
-	while bank_left != MIN_BANK_LEFT && bank_right != MAX_BANK_RIGHT:
+	while not (bank_left == MIN_BANK_LEFT && bank_right == MAX_BANK_RIGHT):
 		_adjust_river_banks(MIN_BANK_LEFT, MAX_BANK_RIGHT, y)
 		block.append_array(_get_river_banks_line(y))
 		segment_length += 1

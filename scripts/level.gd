@@ -1,10 +1,12 @@
 extends Node2D
-class_name GrassLayer
+class_name Level
 
 ## how long a river / island section should be, in tiles
 @export var land_block_length : int = 30
 
-@onready var _grassLayer : TileMapLayer = $GrassLayer
+@export var bridge_scene : PackedScene
+
+@onready var _grassLayer : GrassLayer = $GrassLayer
 @onready var _waterLayer : TileMapLayer = $WaterLayer
 
 enum LandGenerationMode {
@@ -28,9 +30,9 @@ func _input(event: InputEvent) -> void:
 func generate_land() -> void:
 	current_generation_mode = LandGenerationMode.LEVEL_START
 	print_debug("LEVEL_START")
+	_draw_bridge()
 	var block_length : int = _grassLayer.draw_level_start(grass_y)
 	grass_y -= block_length
-	
 	while current_generation_mode != LandGenerationMode.LEVEL_END:
 		current_generation_mode = _get_next_generation_mode(current_generation_mode)
 		block_length = _draw_land_block(grass_y)
@@ -73,3 +75,12 @@ func _get_next_generation_mode(generation_mode : LandGenerationMode) -> LandGene
 			return [LandGenerationMode.RIVER, LandGenerationMode.LEVEL_END].pick_random()
 	print_debug("_get_next_generation_mode: Unknown LandGenerationMode: " + str(generation_mode))
 	return LandGenerationMode.RIVER # should never happen
+
+func _draw_bridge() -> void:
+	var new_bridge = bridge_scene.instantiate()
+	var bridge_position = convert_tiles_to_pixels(_grassLayer.MIDDLE_X, grass_y)
+	new_bridge.position = bridge_position
+	add_child(new_bridge)
+
+func convert_tiles_to_pixels(tile_x : int, tile_y : int) -> Vector2:
+	return Vector2(_grassLayer.tile_set.tile_size.x * tile_x, _grassLayer.tile_set.tile_size.y * tile_y)

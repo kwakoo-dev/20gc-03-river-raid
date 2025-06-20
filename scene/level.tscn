@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://7vduu207os0s"]
+[gd_scene load_steps=11 format=3 uid="uid://7vduu207os0s"]
 
 [ext_resource type="Script" uid="uid://cmehcjhtf2lul" path="res://scripts/level.gd" id="1_36wlx"]
 [ext_resource type="Texture2D" uid="uid://cpegyq12x88na" path="res://gfx/tileset.png" id="1_s4405"]
 [ext_resource type="Texture2D" uid="uid://5union5cdq4s" path="res://gfx/water.png" id="2_dmi07"]
+[ext_resource type="PackedScene" uid="uid://dffno4ri2lbhn" path="res://scene/bridge.tscn" id="2_ismto"]
 [ext_resource type="Script" uid="uid://yu8lt02tf1my" path="res://scripts/water_layer.gd" id="3_ukt71"]
 [ext_resource type="Script" uid="uid://b7xqmw7d4bm3v" path="res://scripts/grass_layer.gd" id="4_7g0b6"]
 
@@ -467,6 +468,7 @@ sources/1 = SubResource("TileSetAtlasSource_36wlx")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_36wlx")
+bridge_scene = ExtResource("2_ismto")
 
 [node name="WaterLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_7g0b6")

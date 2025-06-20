@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dffno4ri2lbhn"]
+
+[ext_resource type="Texture2D" uid="uid://b2n8mynuh53og" path="res://gfx/bridge.png" id="1_rdux5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bro1g"]
+size = Vector2(192, 32)
+
+[node name="Bridge" type="Area2D"]
+
+[node name="Bridge" type="Sprite2D" parent="."]
+texture = ExtResource("1_rdux5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bro1g")
