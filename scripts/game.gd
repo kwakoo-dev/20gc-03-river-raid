@@ -9,4 +9,5 @@ func _input(event: InputEvent) -> void:
 		speed -= 5
 
 func _process(delta: float) -> void:
-	$Level.position.y += delta * speed
+	pass
+	#$Level.position.y += delta * speed
