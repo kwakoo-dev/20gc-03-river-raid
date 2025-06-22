@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dinriuu00s61k"]
+[gd_scene load_steps=5 format=3 uid="uid://dinriuu00s61k"]
 
 [ext_resource type="Script" uid="uid://blgwystedja0g" path="res://scripts/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://7vduu207os0s" path="res://scene/level.tscn" id="1_dbls1"]
 [ext_resource type="PackedScene" uid="uid://bspyq27ltc0vb" path="res://scene/player_plane.tscn" id="2_33cqm"]
+[ext_resource type="Script" uid="uid://gpvqck86hs0a" path="res://scripts/components/level_drawing_component.gd" id="4_xwcet"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_33cqm")
@@ -15,4 +16,13 @@ position = Vector2(352, 664)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerPlane"]
 scale = Vector2(3.30861, -1342.55)
-offset = Vector2(0, -100.14)
+offset = Vector2(0, -287.99)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="LevelDrawingComponent" type="Node" parent="." node_paths=PackedStringArray("level", "camera")]
+script = ExtResource("4_xwcet")
+level = NodePath("../Level")
+camera = NodePath("../PlayerPlane/Camera2D")
+draw_distance = 600
+metadata/_custom_type_script = "uid://gpvqck86hs0a"

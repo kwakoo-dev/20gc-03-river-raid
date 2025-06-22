@@ -6,7 +6,7 @@ class_name Level
 
 @export var bridge_scene : PackedScene
 
-@onready var _grassLayer : GrassLayer = $GrassLayer
+@onready var _grassLayer : GrassLayerV2 = $GrassLayer
 @onready var _waterLayer : TileMapLayer = $WaterLayer
 
 enum LandGenerationMode {
@@ -23,9 +23,16 @@ var grass_y : int = 0
 
 var current_generation_mode : LandGenerationMode = LandGenerationMode.LEVEL_START
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("fire"):
-		generate_land()
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("fire"):
+		#generate_land()
+	#pass
+	
+func draw_river(y : int, river_end_y : int) -> int:
+	var block_length = _grassLayer.draw_river_v2(y, river_end_y)
+	grass_y -= block_length
+	_waterLayer.draw_water_until(grass_y / 2 - 1)
+	return block_length
 
 func generate_land() -> void:
 	current_generation_mode = LandGenerationMode.LEVEL_START
@@ -39,6 +46,9 @@ func generate_land() -> void:
 		grass_y -= block_length
 	
 	_waterLayer.draw_water_until(grass_y / 2)	
+
+func get_land_end_y() -> int:
+	return grass_y * _grassLayer.tile_set.tile_size.y
 
 func _draw_land_block(start_y : int) -> int:
 	match current_generation_mode:
