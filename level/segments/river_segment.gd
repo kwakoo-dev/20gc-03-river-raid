@@ -10,10 +10,10 @@ var current_y = 0
 
 ## todo: temporary
 func _ready() -> void:
+	riverBanks.left -= 4
+	riverBanks.right += 4
 	for i in range(100):
 		draw_next_terrain_line_auto()
-		riverBanks.change_river_banks()
-		current_y -= 1
 
 func setup(riverBanks : RiverBanks) -> void:
 	self.riverBanks = riverBanks
@@ -21,7 +21,11 @@ func setup(riverBanks : RiverBanks) -> void:
 func draw_next_terrain_line() -> void:
 	var line : Array[Vector2i] = riverBanks.get_river_banks_line(current_y)
 	grassLayer.put_grass_raw(line)
+	riverBanks.change_river_banks()
+	current_y -= 1
 
 func draw_next_terrain_line_auto() -> void:
 	var line : Array[Vector2i] = riverBanks.get_river_banks_line(current_y)
 	grassLayer.put_grass_autotile(line)
+	riverBanks.change_river_banks()
+	current_y -= 1

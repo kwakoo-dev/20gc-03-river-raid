@@ -10,5 +10,6 @@ grassLayer = NodePath("GrassLayer")
 waterLayer = NodePath("WaterLayer")
 
 [node name="GrassLayer" parent="." instance=ExtResource("2_yvktl")]
+tile_map_data = PackedByteArray()
 
 [node name="WaterLayer" parent="." instance=ExtResource("3_8742k")]

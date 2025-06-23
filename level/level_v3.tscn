@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2redy4eqmqsk"]
+[gd_scene load_steps=4 format=3 uid="uid://c2redy4eqmqsk"]
 
+[ext_resource type="Script" uid="uid://creyvx3is5s8v" path="res://level/level_v3.gd" id="1_cjwci"]
 [ext_resource type="PackedScene" uid="uid://bxl6k2v27fogy" path="res://level/segments/start_segment.tscn" id="1_ou8mj"]
 [ext_resource type="PackedScene" uid="uid://bty4nvbu4ksuh" path="res://level/segments/river_segment.tscn" id="2_tbkmv"]
 
 [node name="LevelV3" type="Node2D"]
+script = ExtResource("1_cjwci")
 
 [node name="StartSegment" parent="." instance=ExtResource("1_ou8mj")]
 
