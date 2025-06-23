@@ -1,39 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://7vduu207os0s"]
+[gd_scene load_steps=5 format=3 uid="uid://bpikwcfsiq4qk"]
 
-[ext_resource type="Script" uid="uid://cmehcjhtf2lul" path="res://scripts/level.gd" id="1_36wlx"]
-[ext_resource type="Texture2D" uid="uid://cpegyq12x88na" path="res://gfx/tileset.png" id="1_s4405"]
-[ext_resource type="Texture2D" uid="uid://5union5cdq4s" path="res://gfx/water.png" id="2_dmi07"]
-[ext_resource type="PackedScene" uid="uid://dffno4ri2lbhn" path="res://scene/bridge.tscn" id="2_ismto"]
-[ext_resource type="Script" uid="uid://yu8lt02tf1my" path="res://level/layers/water_layer.gd" id="3_ukt71"]
-[ext_resource type="Script" uid="uid://gtd1of0u0qmp" path="res://scripts/grass_layer_v2.gd" id="6_ismto"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dmi07"]
-texture = ExtResource("2_dmi07")
-texture_region_size = Vector2i(32, 32)
-0:0/animation_columns = 15
-0:0/animation_frame_0/duration = 1.0
-0:0/animation_frame_1/duration = 1.0
-0:0/animation_frame_2/duration = 1.0
-0:0/animation_frame_3/duration = 1.0
-0:0/animation_frame_4/duration = 1.0
-0:0/animation_frame_5/duration = 1.0
-0:0/animation_frame_6/duration = 1.0
-0:0/animation_frame_7/duration = 1.0
-0:0/animation_frame_8/duration = 1.0
-0:0/animation_frame_9/duration = 1.0
-0:0/animation_frame_10/duration = 1.0
-0:0/animation_frame_11/duration = 1.0
-0:0/animation_frame_12/duration = 1.0
-0:0/animation_frame_13/duration = 1.0
-0:0/animation_frame_14/duration = 1.0
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_7g0b6"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_dmi07")
+[ext_resource type="Texture2D" uid="uid://cpegyq12x88na" path="res://gfx/tileset.png" id="1_5a5fy"]
+[ext_resource type="Script" uid="uid://dmdx0ka3r50ce" path="res://level/layers/grass_layer_v3.gd" id="2_dqx0w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_36wlx"]
-texture = ExtResource("1_s4405")
+texture = ExtResource("1_5a5fy")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 0.899294, 8, 8, -0.719435, 8)
@@ -466,14 +437,7 @@ terrain_set_0/terrain_1/name = "Water"
 terrain_set_0/terrain_1/color = Color(2.31028e-06, 0.477651, 0.672938, 1)
 sources/1 = SubResource("TileSetAtlasSource_36wlx")
 
-[node name="Level" type="Node2D"]
-script = ExtResource("1_36wlx")
-bridge_scene = ExtResource("2_ismto")
-
-[node name="WaterLayer" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_7g0b6")
-script = ExtResource("3_ukt71")
-
-[node name="GrassLayer" type="TileMapLayer" parent="."]
+[node name="GrassLayerV3" type="TileMapLayer"]
+scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_dmi07")
-script = ExtResource("6_ismto")
+script = ExtResource("2_dqx0w")

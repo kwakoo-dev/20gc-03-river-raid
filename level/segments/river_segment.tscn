@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bty4nvbu4ksuh"]
+
+[ext_resource type="Script" uid="uid://bwt6cnvlcwhqm" path="res://level/segments/river_segment.gd" id="1_yjjsm"]
+[ext_resource type="PackedScene" uid="uid://bpikwcfsiq4qk" path="res://level/layers/grass_layer.tscn" id="2_yvktl"]
+[ext_resource type="PackedScene" uid="uid://88doh863oajd" path="res://level/layers/water_layer.tscn" id="3_8742k"]
+
+[node name="RiverSegment" type="Node2D" node_paths=PackedStringArray("grassLayer", "waterLayer")]
+script = ExtResource("1_yjjsm")
+grassLayer = NodePath("GrassLayer")
+waterLayer = NodePath("WaterLayer")
+
+[node name="GrassLayer" parent="." instance=ExtResource("2_yvktl")]
+
+[node name="WaterLayer" parent="." instance=ExtResource("3_8742k")]

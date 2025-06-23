@@ -1,18 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://dinriuu00s61k"]
+[gd_scene load_steps=6 format=3 uid="uid://dinriuu00s61k"]
 
 [ext_resource type="Script" uid="uid://blgwystedja0g" path="res://scripts/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://7vduu207os0s" path="res://scene/level.tscn" id="1_dbls1"]
 [ext_resource type="PackedScene" uid="uid://bspyq27ltc0vb" path="res://scene/player_plane.tscn" id="2_33cqm"]
 [ext_resource type="Script" uid="uid://gpvqck86hs0a" path="res://scripts/components/level_drawing_component.gd" id="4_xwcet"]
+[ext_resource type="PackedScene" uid="uid://c2redy4eqmqsk" path="res://level/level_v3.tscn" id="5_p1ry8"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_33cqm")
+metadata/_edit_vertical_guides_ = [640.0]
+
+[node name="LevelV3" parent="." instance=ExtResource("5_p1ry8")]
+position = Vector2(0, 712)
 
 [node name="Level" parent="." instance=ExtResource("1_dbls1")]
+visible = false
 position = Vector2(0, 720)
 
 [node name="PlayerPlane" parent="." instance=ExtResource("2_33cqm")]
-position = Vector2(352, 664)
+position = Vector2(640, 636)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerPlane"]
 scale = Vector2(3.30861, -1342.55)

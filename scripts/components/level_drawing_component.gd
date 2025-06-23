@@ -38,16 +38,17 @@ func _get_configuration_warnings() -> PackedStringArray:
 #var print_delay : float = 0;
 
 func _process(delta: float) -> void:
-	var level_end_y = level.get_land_end_y()
-	var camera_position_y = camera.get_screen_center_position().y
-	var camera_with_draw_distance_y = camera_position_y - draw_distance
-	if level_end_y < camera_with_draw_distance_y:
-		return
-		
-	var drawn_lines : int = _draw_land_block()
-	grass_y -= drawn_lines
-	if drawn_lines == 0:
-		_switch_generation_mode(current_generation_mode)
+	pass
+	#var level_end_y = level.get_land_end_y()
+	#var camera_position_y = camera.get_screen_center_position().y
+	#var camera_with_draw_distance_y = camera_position_y - draw_distance
+	#if level_end_y < camera_with_draw_distance_y:
+		#return
+		#
+	#var drawn_lines : int = _draw_land_block()
+	#grass_y -= drawn_lines
+	#if drawn_lines == 0:
+		#_switch_generation_mode(current_generation_mode)
 
 func _draw_land_block() -> int:
 	match current_generation_mode:
