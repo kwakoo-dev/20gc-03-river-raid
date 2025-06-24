@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var _sprites = $Sprites
 
-const SPEED = 5.0
+@export var SPEED = 5.0
 
 @export var move_left : StringName
 @export var move_right : StringName

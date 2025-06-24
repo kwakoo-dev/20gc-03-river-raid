@@ -9,6 +9,12 @@ enum BankChange {
 	NARROWER
 }
 
+static func create(left : int, right : int) -> RiverBanks:
+	var riverBanks = RiverBanks.new()
+	riverBanks.left = left
+	riverBanks.right = right
+	return riverBanks
+
 func change_river_banks() -> void:
 	var left_bank_change : BankChange = _get_random_bank_change()
 	var right_bank_change : BankChange = _get_random_bank_change()

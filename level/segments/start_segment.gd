@@ -1,7 +1,13 @@
-extends Node2D
+class_name StartSegment
+extends LevelSegment
 
 @export var waterLayer : WaterLayer
+@export var grassLayer : GrassLayerV3
 
-func _ready() -> void:
-	pass
-	#waterLayer.draw_water(0, -26)
+func get_river_banks() -> RiverBanks:
+	return RiverBanks.create(Properties.OPENING_LEFT, Properties.OPENING_RIGHT)
+
+func get_segment_end_y() -> int:
+	if grassLayer:
+		return grassLayer.get_segment_end_y()
+	return 0

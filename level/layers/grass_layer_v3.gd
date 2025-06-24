@@ -10,3 +10,9 @@ func put_grass_autotile(cells: Array[Vector2i]) -> void:
 func put_grass_raw(cells: Array[Vector2i]) -> void:
 	for cell in cells:
 		set_cell(cell, 1, GRASS_COORDS)
+
+func get_segment_end_y() -> int:
+	var rect = get_used_rect()
+	var local_position = map_to_local(rect.position)
+	var gp = to_global(local_position)
+	return gp.y

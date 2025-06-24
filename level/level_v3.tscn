@@ -6,8 +6,5 @@
 
 [node name="LevelV3" type="Node2D"]
 script = ExtResource("1_cjwci")
-
-[node name="StartSegment" parent="." instance=ExtResource("1_ou8mj")]
-
-[node name="RiverSegment" parent="." instance=ExtResource("2_tbkmv")]
-position = Vector2(0, -768)
+start_segment_scene = ExtResource("1_ou8mj")
+river_segment_scene = ExtResource("2_tbkmv")
