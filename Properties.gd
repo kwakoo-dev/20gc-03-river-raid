@@ -1,8 +1,10 @@
 extends Node
 
+const DRAWING_DISTANCE = 200
+
 ## in blocks
 const LEVEL_WIDTH : int = 40
-const BRIDGE_WIDTH : int = 12
+const BRIDGE_WIDTH : int = 8
 const NARROWEST : int = 8
 const DEFAULT_BANK_LEFT : int = (LEVEL_WIDTH - BRIDGE_WIDTH) / 2
 const DEFAULT_BANK_RIGHT : int = DEFAULT_BANK_LEFT + BRIDGE_WIDTH
@@ -15,4 +17,4 @@ const OPENING_RIGHT : int = DEFAULT_BANK_RIGHT + 5
 const MIDDLE_X : int = (DEFAULT_BANK_RIGHT + DEFAULT_BANK_LEFT) / 2
 ## The bigger the value, the more straight the river is.
 const RIVER_STRAIGHTNESS : int = 10
-const MAX_SEGMENT_LENGTH : int = 60000
+const MAX_SEGMENT_LENGTH : int = 64

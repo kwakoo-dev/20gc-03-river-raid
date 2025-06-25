@@ -4,9 +4,8 @@
 [ext_resource type="Script" uid="uid://clmxiiyfk2r5c" path="res://level/segments/start_segment.gd" id="1_fsi2i"]
 [ext_resource type="PackedScene" uid="uid://bpikwcfsiq4qk" path="res://level/layers/grass_layer.tscn" id="2_fsi2i"]
 
-[node name="StartSegment" type="Node2D" node_paths=PackedStringArray("waterLayer", "grassLayer")]
+[node name="StartSegment" type="Node2D" node_paths=PackedStringArray("grassLayer")]
 script = ExtResource("1_fsi2i")
-waterLayer = NodePath("WaterLayer")
 grassLayer = NodePath("GrassLayerV3")
 
 [node name="WaterLayer" parent="." instance=ExtResource("1_eebyc")]

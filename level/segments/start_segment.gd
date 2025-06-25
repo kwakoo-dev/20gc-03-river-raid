@@ -1,7 +1,6 @@
 class_name StartSegment
 extends LevelSegment
 
-@export var waterLayer : WaterLayer
 @export var grassLayer : GrassLayerV3
 
 func get_river_banks() -> RiverBanks:
