@@ -16,7 +16,7 @@ func is_generated() -> bool:
 func get_segment_end_y() -> int:
 	if grassLayer:
 		return grassLayer.get_segment_end_y()
-	return 0
+	return to_global(Vector2(0, 0)).y
 
 func get_river_banks() -> RiverBanks:
 	return riverBanks

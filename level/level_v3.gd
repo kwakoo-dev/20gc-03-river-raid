@@ -21,27 +21,19 @@ var level_segments : Array[LevelSegment] = []
 
 
 func _ready() -> void:
-	#instantiate_new_segment(start_segment_scene)
 	add_new_segment()
-	#var start_segment : StartSegment  = start_segment_scene.instantiate()
-	#start_segment.global_position.x = 0
-	#start_segment.global_position.y = get_viewport_rect().size.y
-	#level_segments.append(start_segment)
-	#current_segment = start_segment
-	#add_child(start_segment)
-
-
 
 func get_level_end_y() -> int:
-	return current_segment.get_segment_end_y()
+	if current_segment:
+		return current_segment.get_segment_end_y()
+	return to_global(Vector2(0, 0)).y
 
 # tries to draw next part of the level. May be the whole segment, or part of it
 func draw_level() -> void:
-	if drawing_ended():
-		return
 	if current_segment.drawing_ended():
+		print_debug("Drawing of current segment ended at " + str(current_segment.global_position))
 		add_new_segment()
-	if current_segment.is_generated():
+	elif current_segment.is_generated():
 		current_segment.draw_next_terrain_line()
 
 func add_new_segment() -> void:
@@ -75,21 +67,16 @@ func choose_new_segment() -> SegmentType:
 	return SegmentType.RIVER # should never happen
 
 func instantiate_new_segment(segment_scene : PackedScene) -> void:
-	var start_end_y : int = get_end_y()
+	var start_end_y : int = get_level_end_y()
 	var river_banks : RiverBanks = get_river_banks()
-
 	var segment : LevelSegment = segment_scene.instantiate()
 	segment.setup(river_banks)
+	add_child(segment)
 	segment.global_position.x = 0
 	segment.global_position.y = start_end_y
+	print_debug("Segment global position: " + str(segment.global_position))
 	level_segments.append(segment)
 	current_segment = segment
-	add_child(segment)
-
-func get_end_y() -> int:
-	if current_segment:
-		return current_segment.get_segment_end_y()
-	return get_viewport_rect().size.y
 
 func get_river_banks() -> RiverBanks:
 	if current_segment:

@@ -18,3 +18,11 @@ func _process(delta: float) -> void:
 	if level_end_y < camera_with_draw_distance_y:
 		return
 	level.draw_level()
+
+# TODO: temporary metrics
+
+func _ready() -> void:
+	Performance.add_custom_monitor("game/level_end_y", get_level_end_y)
+
+func get_level_end_y() -> int:
+	return -level.get_level_end_y()

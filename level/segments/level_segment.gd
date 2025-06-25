@@ -13,7 +13,7 @@ func get_river_banks() -> RiverBanks:
 	return RiverBanks.new()
 
 func get_segment_end_y() -> int:
-	return 0
+	return to_global(Vector2(0, 0)).y
 
 func draw_next_terrain_line() -> void:
 	pass

@@ -19,7 +19,7 @@ func get_river_banks() -> RiverBanks:
 func get_segment_end_y() -> int:
 	if grassLayer:
 		return grassLayer.get_segment_end_y()
-	return 0
+	return to_global(Vector2(0, 0)).y
 
 func draw_next_terrain_line() -> void:
 	var line : Array[Vector2i] = riverBanks.get_river_banks_line(current_y)

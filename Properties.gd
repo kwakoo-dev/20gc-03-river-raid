@@ -17,4 +17,4 @@ const OPENING_RIGHT : int = DEFAULT_BANK_RIGHT + 5
 const MIDDLE_X : int = (DEFAULT_BANK_RIGHT + DEFAULT_BANK_LEFT) / 2
 ## The bigger the value, the more straight the river is.
 const RIVER_STRAIGHTNESS : int = 10
-const MAX_SEGMENT_LENGTH : int = 64
+const MAX_SEGMENT_LENGTH : int = 30

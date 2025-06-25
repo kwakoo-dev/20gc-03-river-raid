@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpikwcfsiq4qk"]
+[gd_scene load_steps=6 format=3 uid="uid://bpikwcfsiq4qk"]
 
 [ext_resource type="Texture2D" uid="uid://cpegyq12x88na" path="res://gfx/tileset.png" id="1_5a5fy"]
 [ext_resource type="Script" uid="uid://dmdx0ka3r50ce" path="res://level/layers/grass_layer_v3.gd" id="2_dqx0w"]
+[ext_resource type="Texture2D" uid="uid://cinetybli715r" path="res://icon.svg" id="3_jq74f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_36wlx"]
 texture = ExtResource("1_5a5fy")
@@ -441,3 +442,7 @@ sources/1 = SubResource("TileSetAtlasSource_36wlx")
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_dmi07")
 script = ExtResource("2_dqx0w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_jq74f")
