@@ -9,7 +9,7 @@ var previous_level : LevelV3 = null
 func _ready() -> void:
 	create_new_level(0)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if current_level.drawing_ended():
 		create_new_level(current_level.get_level_end_y())
 
@@ -25,3 +25,6 @@ func create_new_level(position_y : int) -> void:
 	previous_level = current_level
 	current_level = new_level
 	level_drawing_component.set_level(new_level)
+
+func _on_tree_exiting() -> void:
+	print_orphan_nodes()

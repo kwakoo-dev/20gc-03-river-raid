@@ -13,6 +13,7 @@ metadata/_edit_vertical_guides_ = [640.0]
 
 [node name="PlayerPlane" parent="." instance=ExtResource("2_33cqm")]
 position = Vector2(640, -72)
+collision_mask = 0
 SPEED = 44.735
 
 [node name="Camera2D" type="Camera2D" parent="PlayerPlane"]
@@ -24,3 +25,9 @@ position_smoothing_speed = 10.0
 script = ExtResource("4_xwcet")
 camera = NodePath("../PlayerPlane/Camera2D")
 metadata/_custom_type_script = "uid://gpvqck86hs0a"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

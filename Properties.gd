@@ -1,6 +1,6 @@
 extends Node
 
-const DRAWING_DISTANCE = 200
+const DRAWING_DISTANCE = 400
 
 ## in blocks
 const LEVEL_WIDTH : int = 40
@@ -17,4 +17,6 @@ const OPENING_RIGHT : int = DEFAULT_BANK_RIGHT + 5
 const MIDDLE_X : int = (DEFAULT_BANK_RIGHT + DEFAULT_BANK_LEFT) / 2
 ## The bigger the value, the more straight the river is.
 const RIVER_STRAIGHTNESS : int = 10
-const MAX_SEGMENT_LENGTH : int = 30
+const ISLAND_STRAIGHTNESS : int = 5
+const ISLAND_END_LENGTH : int = 2
+const MAX_SEGMENT_LENGTH : int = 40

@@ -7,8 +7,8 @@ var riverBanks : RiverBanks = RiverBanks.new()
 
 var current_y = 0
 
-func setup(riverBanks : RiverBanks) -> void:
-	self.riverBanks = riverBanks
+func setup(new_river_banks : RiverBanks) -> void:
+	self.riverBanks = new_river_banks
 
 func is_generated() -> bool:
 	return true
@@ -16,7 +16,7 @@ func is_generated() -> bool:
 func get_segment_end_y() -> int:
 	if grassLayer:
 		return grassLayer.get_segment_end_y()
-	return to_global(Vector2(0, 0)).y
+	return int(to_global(Vector2(0, 0)).y)
 
 func get_river_banks() -> RiverBanks:
 	return riverBanks

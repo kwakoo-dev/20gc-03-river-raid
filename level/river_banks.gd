@@ -1,4 +1,5 @@
 class_name RiverBanks
+extends RefCounted
 
 var left : int = Properties.DEFAULT_BANK_LEFT
 var right : int = Properties.DEFAULT_BANK_RIGHT
@@ -9,10 +10,10 @@ enum BankChange {
 	NARROWER
 }
 
-static func create(left : int, right : int) -> RiverBanks:
+static func create(new_left : int, new_right : int) -> RiverBanks:
 	var riverBanks = RiverBanks.new()
-	riverBanks.left = left
-	riverBanks.right = right
+	riverBanks.left = new_left
+	riverBanks.right = new_right
 	return riverBanks
 
 func change_river_banks() -> void:

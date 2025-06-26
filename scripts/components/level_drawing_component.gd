@@ -6,10 +6,10 @@ var level : LevelV3
 @export
 var camera : Camera2D
 
-func set_level(level : LevelV3) -> void:
-	self.level = level
+func set_level(new_level : LevelV3) -> void:
+	self.level = new_level
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if level.drawing_ended():
 		return
 	var level_end_y = level.get_level_end_y()

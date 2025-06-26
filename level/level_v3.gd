@@ -4,14 +4,14 @@ extends Node2D
 @export_category("Fragment Scenes")
 @export var start_segment_scene : PackedScene
 @export var river_segment_scene : PackedScene
+@export var island_segment_scene : PackedScene
 @export var end_segment_scene : PackedScene
 
 enum SegmentType {
 	LEVEL_START,
 	LEVEL_END,
 	RIVER,
-	#ISLAND_START,
-	#ISLAND
+	ISLAND
 }
 
 var current_segment_type : SegmentType = SegmentType.LEVEL_START
@@ -26,7 +26,7 @@ func _ready() -> void:
 func get_level_end_y() -> int:
 	if current_segment:
 		return current_segment.get_segment_end_y()
-	return to_global(Vector2(0, 0)).y
+	return int(to_global(Vector2(0, 0)).y)
 
 # tries to draw next part of the level. May be the whole segment, or part of it
 func draw_level() -> void:
@@ -47,6 +47,10 @@ func add_new_segment() -> void:
 			print_debug("Adding RIVER segment")
 			instantiate_new_segment(river_segment_scene)
 			current_segment_type = SegmentType.RIVER
+		SegmentType.ISLAND:
+			print_debug("Adding ISLAND segment")
+			instantiate_new_segment(island_segment_scene)
+			current_segment_type = SegmentType.ISLAND
 		SegmentType.LEVEL_END:
 			print_debug("Adding END segment")
 			instantiate_new_segment(end_segment_scene) 
@@ -58,8 +62,10 @@ func choose_new_segment() -> SegmentType:
 		return SegmentType.LEVEL_START
 	match current_segment_type:
 		SegmentType.LEVEL_START:
-			return [SegmentType.RIVER].pick_random()
+			return [SegmentType.RIVER, SegmentType.ISLAND].pick_random()
 		SegmentType.RIVER:
+			return [SegmentType.RIVER, SegmentType.ISLAND, SegmentType.LEVEL_END].pick_random()
+		SegmentType.ISLAND:
 			return [SegmentType.RIVER, SegmentType.LEVEL_END].pick_random()
 		SegmentType.LEVEL_END:
 			return [SegmentType.LEVEL_START].pick_random()
