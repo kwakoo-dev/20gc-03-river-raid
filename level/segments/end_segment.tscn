@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bknu8oavfmqi2"]
+
+[ext_resource type="Script" uid="uid://bsg3yu0kfd0h2" path="res://level/segments/end_segment.gd" id="1_8xxov"]
+[ext_resource type="PackedScene" uid="uid://bpikwcfsiq4qk" path="res://level/layers/grass_layer.tscn" id="2_b762p"]
+
+[node name="EndSegment" type="Node2D" node_paths=PackedStringArray("grass_layer")]
+script = ExtResource("1_8xxov")
+grass_layer = NodePath("GrassLayer")
+
+[node name="GrassLayer" parent="." instance=ExtResource("2_b762p")]

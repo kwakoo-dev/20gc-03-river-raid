@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://w0xjipsxu1xc"]
+
+[ext_resource type="Texture2D" uid="uid://5union5cdq4s" path="res://gfx/water.png" id="1_grxuo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dmi07"]
+texture = ExtResource("1_grxuo")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 15
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/animation_frame_8/duration = 1.0
+0:0/animation_frame_9/duration = 1.0
+0:0/animation_frame_10/duration = 1.0
+0:0/animation_frame_11/duration = 1.0
+0:0/animation_frame_12/duration = 1.0
+0:0/animation_frame_13/duration = 1.0
+0:0/animation_frame_14/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7g0b6"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_dmi07")
+
+[sub_resource type="GDScript" id="GDScript_r8hfc"]
+script/source = "class_name WaterLayer
+extends TileMapLayer
+
+var water_length : int = 0
+
+# deprecated
+func draw_water_until(until_y : int) -> void:
+	print_debug(\"until_y: \" + str(until_y))
+	for y in range(water_length, until_y, -1):
+		#print_debug(\"y: \" + str(y))
+		for x in range(Properties.LEVEL_WIDTH):
+			set_cell(Vector2i(x, y), 0, Vector2i(0,0))
+	water_length = until_y
+
+func draw_water(from_y : int, to_y : int) -> void:
+	for y in range(from_y, to_y, -1):
+		for x in range(Properties.LEVEL_WIDTH):
+			set_cell(Vector2i(x, y), 0, Vector2i(0,0))
+"
+
+[node name="WaterLayer" type="TileMapLayer"]
+tile_set = SubResource("TileSet_7g0b6")
+script = SubResource("GDScript_r8hfc")
