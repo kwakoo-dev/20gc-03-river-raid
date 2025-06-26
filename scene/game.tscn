@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://blgwystedja0g" path="res://scripts/game.gd" id="1_33cqm"]
 [ext_resource type="PackedScene" uid="uid://bspyq27ltc0vb" path="res://scene/player_plane.tscn" id="2_33cqm"]
 [ext_resource type="Script" uid="uid://gpvqck86hs0a" path="res://scripts/components/level_drawing_component.gd" id="4_xwcet"]
-[ext_resource type="PackedScene" uid="uid://c2redy4eqmqsk" path="res://level/level_v3.tscn" id="5_p1ry8"]
+[ext_resource type="PackedScene" uid="uid://c2redy4eqmqsk" path="res://level/level.tscn" id="5_p1ry8"]
 
 [node name="game" type="Node2D" node_paths=PackedStringArray("level_drawing_component")]
 script = ExtResource("1_33cqm")

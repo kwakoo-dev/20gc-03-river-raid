@@ -1,4 +1,4 @@
-class_name GrassLayerV3
+class_name GrassLayer
 extends TileMapLayer
 
 func put_grass_autotile(cells: Array[Vector2i]) -> void:

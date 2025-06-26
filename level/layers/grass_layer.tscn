@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bpikwcfsiq4qk"]
 
 [ext_resource type="Texture2D" uid="uid://cpegyq12x88na" path="res://gfx/tileset.png" id="1_5a5fy"]
-[ext_resource type="Script" uid="uid://dmdx0ka3r50ce" path="res://level/layers/grass_layer_v3.gd" id="2_dqx0w"]
+[ext_resource type="Script" uid="uid://dmdx0ka3r50ce" path="res://level/layers/grass_layer.gd" id="2_dqx0w"]
 [ext_resource type="Texture2D" uid="uid://cinetybli715r" path="res://icon.svg" id="3_jq74f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_36wlx"]
@@ -438,7 +438,7 @@ terrain_set_0/terrain_1/name = "Water"
 terrain_set_0/terrain_1/color = Color(2.31028e-06, 0.477651, 0.672938, 1)
 sources/1 = SubResource("TileSetAtlasSource_36wlx")
 
-[node name="GrassLayerV3" type="TileMapLayer"]
+[node name="GrassLayer" type="TileMapLayer"]
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_dmi07")
 script = ExtResource("2_dqx0w")

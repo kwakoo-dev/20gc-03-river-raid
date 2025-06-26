@@ -1,7 +1,7 @@
 class_name LevelSegment
 extends Node2D
 
-func setup(_riverBanks : RiverBanks) -> void:
+func setup(_river_banks : RiverBanks) -> void:
 	pass
 
 ## returns true if segment is generated line by line,
