@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cujnsx2tkfk08"]
+
+[ext_resource type="Texture2D" uid="uid://0siyncbb1moc" path="res://gfx/mountains.png" id="1_erogg"]
+
+[sub_resource type="GDScript" id="GDScript_erogg"]
+script/source = "extends CharacterBody2D
+
+func _physics_process(_delta: float) -> void:
+	var input_direction = Input.get_vector(\"left\", \"right\", \"accelerate\", \"decelerate\")
+	velocity = input_direction * 500 * _delta
+	
+
+	
+	var collision = move_and_collide(velocity)
+	if collision:
+		print_debug(collision)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imyr3"]
+size = Vector2(226, 161)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = SubResource("GDScript_erogg")
+
+[node name="Mountains" type="Sprite2D" parent="."]
+position = Vector2(4, -9)
+texture = ExtResource("1_erogg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, -3.5)
+shape = SubResource("RectangleShape2D_imyr3")

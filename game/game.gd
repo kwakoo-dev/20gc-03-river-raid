@@ -2,12 +2,20 @@ extends Node2D
 
 @export var level_scene : PackedScene
 @export var level_drawing_component : LevelDrawingComponent
+@export var player : PlayerPlane
 
 var current_level : LevelV3
 var previous_level : LevelV3 = null
+var current_checkpoint : Bridge = null
 
 func _ready() -> void:
 	create_new_level(0)
+	current_checkpoint = current_level.bridge
+	current_checkpoint.hide()
+	SignalBus.show_get_ready.emit()
+	SignalBus.checkpoint_reached.connect(on_checkpoint_reached)
+	SignalBus.player_hit_bridge.connect(on_player_death)
+	SignalBus.player_hit_wall.connect(on_player_death)
 
 func _process(_delta: float) -> void:
 	if current_level.drawing_ended():
@@ -28,3 +36,12 @@ func create_new_level(position_y : int) -> void:
 
 func _on_tree_exiting() -> void:
 	print_orphan_nodes()
+
+func on_checkpoint_reached(bridge : Bridge) -> void:
+	SignalBus.show_checkpoint_reached.emit()
+	current_checkpoint = bridge
+
+func on_player_death() -> void:
+	SignalBus.show_player_died.emit()
+	current_checkpoint.hide()
+	player.global_position = current_checkpoint.global_position - Vector2(0, 200)

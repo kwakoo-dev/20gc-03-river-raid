@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6f2e7qwcdqly"]
+
+[ext_resource type="Script" uid="uid://c14kwqalmh5x0" path="res://game/gui.gd" id="1_80edf"]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_80edf")
+metadata/_edit_use_anchors_ = true
+
+[node name="GetReadyLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.533
+anchor_right = 1.0
+anchor_bottom = 0.533
+offset_left = 16.0
+offset_top = -199.76
+offset_right = 1577.0
+offset_bottom = 211.24
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "Get Ready!"
+metadata/_edit_use_anchors_ = true
+
+[node name="CheckpointLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.533
+anchor_right = 1.0
+anchor_bottom = 0.533
+offset_left = 16.0
+offset_top = -199.76
+offset_right = 1577.0
+offset_bottom = 211.24
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "Checkpoint!"
+metadata/_edit_use_anchors_ = true
+
+[node name="YouDied" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.533
+anchor_right = 1.0
+anchor_bottom = 0.533
+offset_left = 16.0
+offset_top = -199.76
+offset_right = 1577.0
+offset_bottom = 211.24
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "You died!"
+metadata/_edit_use_anchors_ = true

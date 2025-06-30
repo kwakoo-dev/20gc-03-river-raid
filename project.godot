@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Properties="*res://Properties.gd"
+Properties="*res://game/Properties.gd"
+SignalBus="*res://game/signal_bus.gd"
 
 [display]
 
@@ -28,9 +29,16 @@ window/vsync/vsync_mode=0
 [file_customization]
 
 folder_colors={
-"res://gfx/": "pink",
-"res://scripts/components/": "yellow"
+"res://components/": "yellow",
+"res://gfx/": "pink"
 }
+
+[global_group]
+
+players=""
+bullets=""
+walls=""
+bridges=""
 
 [input]
 
@@ -74,6 +82,7 @@ fire2={
 2d_physics/layer_1="player"
 2d_physics/layer_2="walls"
 2d_physics/layer_3="bullet"
+2d_physics/layer_4="checkpoints"
 
 [rendering]
 

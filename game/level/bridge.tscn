@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dffno4ri2lbhn"]
+
+[ext_resource type="Script" uid="uid://cejnx3km67fqw" path="res://game/level/bridge.gd" id="1_re7xx"]
+[ext_resource type="Texture2D" uid="uid://b2n8mynuh53og" path="res://gfx/bridge.png" id="2_estl1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bro1g"]
+size = Vector2(384, 64)
+
+[node name="Bridge" type="Area2D" groups=["bridges"]]
+z_index = 50
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_re7xx")
+
+[node name="Bridge" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_estl1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bro1g")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

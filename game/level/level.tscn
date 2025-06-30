@@ -1,0 +1,16 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2redy4eqmqsk"]
+
+[ext_resource type="Script" uid="uid://creyvx3is5s8v" path="res://game/level/level.gd" id="1_cjwci"]
+[ext_resource type="PackedScene" uid="uid://bxl6k2v27fogy" path="res://game/level/segments/start_segment.tscn" id="1_ou8mj"]
+[ext_resource type="PackedScene" uid="uid://bty4nvbu4ksuh" path="res://game/level/segments/river_segment.tscn" id="2_tbkmv"]
+[ext_resource type="PackedScene" uid="uid://bknu8oavfmqi2" path="res://game/level/segments/end_segment.tscn" id="4_76bd2"]
+[ext_resource type="PackedScene" uid="uid://legb1cxkjeol" path="res://game/level/segments/island_segment.tscn" id="4_jo6aj"]
+[ext_resource type="PackedScene" uid="uid://dffno4ri2lbhn" path="res://game/level/bridge.tscn" id="6_44x8d"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_cjwci")
+start_segment_scene = ExtResource("1_ou8mj")
+river_segment_scene = ExtResource("2_tbkmv")
+island_segment_scene = ExtResource("4_jo6aj")
+end_segment_scene = ExtResource("4_76bd2")
+bridge_scene = ExtResource("6_44x8d")

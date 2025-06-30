@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bspyq27ltc0vb"]
+[gd_scene load_steps=10 format=3 uid="uid://bspyq27ltc0vb"]
 
 [ext_resource type="Texture2D" uid="uid://dwd7bbrxe8hft" path="res://gfx/sprites.png" id="1_e6vsl"]
-[ext_resource type="Script" uid="uid://bmuvfauucus51" path="res://scripts/player_plane.gd" id="1_kt6hc"]
+[ext_resource type="Script" uid="uid://bmuvfauucus51" path="res://game/player/player_plane.gd" id="1_kt6hc"]
+[ext_resource type="PackedScene" uid="uid://cdl2tv0itsglx" path="res://game/weapons/bullet.tscn" id="2_o3w30"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kt6hc"]
 atlas = ExtResource("1_e6vsl")
@@ -58,12 +59,13 @@ animations = [{
 radius = 7.0
 height = 16.0
 
-[node name="PlayerPlane" type="CharacterBody2D"]
+[node name="PlayerPlane" type="CharacterBody2D" node_paths=PackedStringArray("gun") groups=["players"]]
+z_index = 100
 scale = Vector2(4, 4)
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("1_kt6hc")
-move_left = &"left"
-move_right = &"right"
+bullet_scene = ExtResource("2_o3w30")
+gun = NodePath("Gun")
 
 [node name="Sprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sh10r")
@@ -71,3 +73,6 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_e6vsl")
+
+[node name="Gun" type="Marker2D" parent="."]
+position = Vector2(0, -7)

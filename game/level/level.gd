@@ -6,6 +6,7 @@ extends Node2D
 @export var river_segment_scene : PackedScene
 @export var island_segment_scene : PackedScene
 @export var end_segment_scene : PackedScene
+@export var bridge_scene : PackedScene
 
 enum SegmentType {
 	LEVEL_START,
@@ -15,13 +16,13 @@ enum SegmentType {
 }
 
 var current_segment_type : SegmentType = SegmentType.LEVEL_START
-
 var current_segment : LevelSegment
 var level_segments : Array[LevelSegment] = []
-
+var bridge : Bridge
 
 func _ready() -> void:
 	add_new_segment()
+	add_bridge()
 
 func get_level_end_y() -> int:
 	if current_segment:
@@ -83,6 +84,16 @@ func instantiate_new_segment(segment_scene : PackedScene) -> void:
 	print_debug("Segment global position: " + str(segment.global_position))
 	level_segments.append(segment)
 	current_segment = segment
+
+func add_bridge() -> void:
+	var new_bridge : Bridge = bridge_scene.instantiate()
+	bridge = new_bridge
+	add_child(new_bridge)
+	new_bridge.position.x = Properties.MIDDLE_X
+	new_bridge.position.y = Properties.BRIDGE_Y
+	print_debug("bridge.position: " + str(new_bridge.position))
+	print_debug("bridge.global_position: " + str(new_bridge.global_position))
+	
 
 func get_river_banks() -> RiverBanks:
 	if current_segment:

@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dinriuu00s61k"]
+
+[ext_resource type="Script" uid="uid://blgwystedja0g" path="res://game/game.gd" id="1_dxrkv"]
+[ext_resource type="PackedScene" uid="uid://c2redy4eqmqsk" path="res://game/level/level.tscn" id="2_dakft"]
+[ext_resource type="PackedScene" uid="uid://b6f2e7qwcdqly" path="res://game/gui.tscn" id="3_u5opy"]
+[ext_resource type="PackedScene" uid="uid://bspyq27ltc0vb" path="res://game/player/player_plane.tscn" id="4_y36n6"]
+[ext_resource type="Script" uid="uid://gpvqck86hs0a" path="res://components/level_drawing_component.gd" id="5_l8g03"]
+[ext_resource type="PackedScene" uid="uid://bxr6exx6vhxmw" path="res://game/level/water.tscn" id="6_dakft"]
+
+[node name="game" type="Node2D" node_paths=PackedStringArray("level_drawing_component", "player")]
+script = ExtResource("1_dxrkv")
+level_scene = ExtResource("2_dakft")
+level_drawing_component = NodePath("LevelDrawingComponent")
+player = NodePath("PlayerPlane")
+metadata/_edit_vertical_guides_ = [640.0]
+
+[node name="GUI" parent="." instance=ExtResource("3_u5opy")]
+
+[node name="PlayerPlane" parent="." instance=ExtResource("4_y36n6")]
+position = Vector2(640, -72)
+
+[node name="Camera2D" type="Camera2D" parent="PlayerPlane"]
+scale = Vector2(3.30861, -1342.55)
+offset = Vector2(0, -287.99)
+limit_left = 0
+limit_right = 1280
+position_smoothing_speed = 10.0
+
+[node name="LevelDrawingComponent" type="Node" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("5_l8g03")
+camera = NodePath("../PlayerPlane/Camera2D")
+metadata/_custom_type_script = "uid://gpvqck86hs0a"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Water" parent="." instance=ExtResource("6_dakft")]
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
