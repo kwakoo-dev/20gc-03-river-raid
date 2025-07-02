@@ -20,6 +20,7 @@ const BRIDGE_Y : int = -96
 const RIVER_STRAIGHTNESS : int = 10
 const ISLAND_STRAIGHTNESS : int = 5
 const ISLAND_END_LENGTH : int = 2
+const MAX_ISLAND_LENGTH : int = 40
 const MAX_SEGMENT_LENGTH : int = 40
 
 # PLANE
@@ -32,6 +33,9 @@ const PLANE_TURN_DEAD_ZONE : float = 0.1
 # BULLETS
 const BULLET_SPEED : int = 1500
 const WEAPON_COOLDOWN : float = 400 # in miliseconds
+
+# ENEMIES
+const ENEMY_SPEED : int = 200
 
 # GUI
 const INFO_SCROLL_SPEED : int = 800

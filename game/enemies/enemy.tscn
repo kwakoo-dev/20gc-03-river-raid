@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8f1o806aicfb"]
+
+[ext_resource type="Texture2D" uid="uid://q0c7r5cr5e7u" path="res://gfx/16x16 pea guy.png" id="1_1kd2t"]
+[ext_resource type="Script" uid="uid://c3l2tg3in23xp" path="res://game/enemies/enemy.gd" id="1_b4nw2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b4nw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1kd2t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="Node2D" node_paths=PackedStringArray("ray_cast_right", "ray_cast_left", "sprite")]
+script = ExtResource("1_b4nw2")
+ray_cast_right = NodePath("RayCastRight")
+ray_cast_left = NodePath("RayCastLeft")
+sprite = NodePath("Sprite")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_b4nw2")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(32, 0)
+collision_mask = 2
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-40, 0)
+collision_mask = 2

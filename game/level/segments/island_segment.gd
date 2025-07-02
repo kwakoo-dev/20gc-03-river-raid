@@ -53,14 +53,14 @@ func draw_island() -> void:
 	grass_layer.put_grass_autotile(line)
 	island.change_island_banks()
 	current_y -= 1
-	if abs(current_y) >= Properties.MAX_SEGMENT_LENGTH - Properties.ISLAND_END_LENGTH:
+	if abs(current_y) >= Properties.MAX_ISLAND_LENGTH - Properties.ISLAND_END_LENGTH:
 		current_island_segment_type = IslandSegmentType.ISLAND_END
 
 func draw_island_end() -> void:
 	var line : Array[Vector2i] = river_banks.get_river_banks_line(current_y)
 	grass_layer.put_grass_autotile(line)
 	current_y -= 1
-	if abs(current_y) >= Properties.MAX_SEGMENT_LENGTH:
+	if abs(current_y) >= Properties.MAX_ISLAND_LENGTH:
 		drawing_ended_flag = true
 
 func drawing_ended() -> bool:
